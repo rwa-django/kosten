@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block APPTITLE %}My Fuel{% endblock %}
+
+{% block content %}
+    <section>
+      <div class="grid-x grid-padding-x">
+        <div class="cell auto"></div>
+        <div class="small-6 cell">
+                {% if user.is_authenticated %}
+                    <h2>Hi {{ user.first_name }} {{ user.last_name }}!</h2>
+                    <div class="box box-button">
+                        <a href="{% url 'logout' %}">
+                            <div class="button">Logout</div>
+                        </a>
+                    </div>
+                {% else %}
+                    <h2>Login</h2>
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit" class="button button__login">Login</button>
+                    </form>
+                {% endif %}
+            </div>
+            <div class="cell auto"></div>
+        </div>
+    </section>
+{% endblock %}
+

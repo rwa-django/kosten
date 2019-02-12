@@ -1,0 +1,83 @@
+body {
+  padding: 0px;
+  margin: 0px;
+}
+
+/* DEBUG */
+div {
+  _border: 1px dotted red;
+}
+
+.header {
+  text-align: center;
+}
+
+h1, h3 {
+  text-align: center;
+}
+
+[type='text'], [type='password'] {
+    text-align: center;
+}
+
+.main {
+  height: calc(100vh - 67px);
+  margin-bottom: 0;
+}
+.article_main {
+  height: calc(100vh - 53px);
+}
+.login_main {
+  height: calc(100vh);
+}
+
+.main_content {
+  background-color: #f3f3f3;
+}
+
+footer {
+    background-color: #ff1800;
+    color: #fbe6b8;
+    display: flex;
+    font-size: 9px;
+    justify-content: center;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+
+@media screen and (max-width: 39.9375em) {
+  .main {
+    height: calc(100vh - 53px) !important;
+  }
+  .top-bar ul {
+    background-color: #9c0a00 !important;
+  }
+
+}
+
+
+/* NAVIGATION */
+.title-bar,
+.top-bar {
+  background: #ff1800;
+  color: #fff;
+}
+
+.top-bar ul {
+  background-color: #ff1800;
+}
+
+.menu a {
+  color: #fff;
+}
+
+.dropdown.menu .is-active a {
+  color: #fbe6b8;
+}
+
+.dropdown.menu > li.is-dropdown-submenu-parent > a::after {
+  border-color: #fbe6b8 transparent transparent;
+}
+

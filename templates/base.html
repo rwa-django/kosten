@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0 minimal-ui"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/foundation.css' %}">
+    <link rel="stylesheet" href="{% static 'css/app.css' %}">
+    <title>Meine Kosten</title>
+</head>
+<body>
+    <header class="login">
+        <div class="title-bar" data-responsive-toggle="example-animated-menu" data-hide-for="medium">
+            <div class="cell">
+                <div class="grid-x">
+                    <div class="cell text-center">
+                        {% block APPTITLE %}{% endblock %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <article class="grid-container article_main">
+        <div class="cell medium-auto medium-cell-block-container main_content">
+            <div class="grid-y login_main">
+                <div class="cell small-2"></div>
+                <div class="cell small-6 text-center">
+                    {% block content %}{% endblock %}
+                </div>
+            </div>
+        </div>
+    </article>
+    <footer>
+        <span>© 2019 rwalser.ch - Alle Rechte vorbehalten.</span>
+    </footer>
+</body>
+</html>
