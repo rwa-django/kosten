@@ -5,7 +5,7 @@ body {
 
 /* DEBUG */
 div {
-  _border: 1px dotted red;
+  _border: 1px dotted yellow;
 }
 
 .header {
@@ -54,6 +54,9 @@ footer {
   .top-bar ul {
     background-color: #9c0a00 !important;
   }
+    .dropdown.menu .is-active a {
+      color: #fbe6b8;
+    }
 
 }
 
@@ -73,6 +76,11 @@ footer {
   color: #fff;
 }
 
+.menu .active > a {
+  background: #ff5b0c;
+  color: #9c0a00;
+}
+
 .dropdown.menu .is-active a {
   color: #fbe6b8;
 }
@@ -81,3 +89,9 @@ footer {
   border-color: #fbe6b8 transparent transparent;
 }
 
+.v-type__CAR {
+    background-color: #ff1800;
+}
+.v-type__MOTO {
+    background-color: #ff1800;
+}

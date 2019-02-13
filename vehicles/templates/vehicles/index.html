@@ -7,6 +7,33 @@
     - Übersicht -
 {% endblock %}
 
+{% block NAV-TYPE-MOB %}
+    {% block NAV-TYPE %}
+        <form action="" method="post">{% csrf_token %}
+            <div class="grid-x grid-margin-x">
+                <div class="cell auto"></div>
+                <div class="cell shrink">
+                    <ul class="dropdown menu" data-dropdown-menu>
+                        <li>
+                            <a href="#" class="{% if bt_type == 'A' %}konto-type--col{% endif %}">{{ vt_label }}</a>
+                            {% if vt_list %}
+                                <ul class="menu">
+                                    {% for vt in vt_list %}
+                                        <li class="dropdowns {% if vt.aktiv %}active{% endif %} v-type__{{ vt.type }}">
+                                            <a class="dropdown-sel" href="{% url 'vehicles:settype' vt.id %}" data-set-budget-typ="{{ vt.id }}">{{ vt.label }}</a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </form>
+    {% endblock %}
+{% endblock %}
+
+
 {% block content %}
 
     <h2>Independent scrolling content</h2>

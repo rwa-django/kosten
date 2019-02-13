@@ -18,14 +18,15 @@
             <div class="">
                 <button class="menu-icon" type="button" data-toggle></button>
             </div>
-            <div class="cell">
+            <div class="cell auto">
                 <div class="grid-x">
-                    <div class="cell small-10 text-center">
+                    <div class="cell auto text-right">
                         {% block APPTITLE-MOB %}{% endblock %}
                     </div>
                     <div class="cell small-2"></div>
                 </div>
             </div>
+            <div class="">{% block NAV-TYPE-MOB %}{% endblock %}</div>
         </div>
         <!-- /mobile nav bar -->
         <div class="top-bar grid-x" id="example-animated-menu" data-animate="hinge-in-from-top spin-out">
@@ -35,7 +36,9 @@
                         <ul class="menu vertical">
                             <li><a href="#">Einstellungen</a></li>
                             <li><a href="#">Statistiken</a></li>
-                            <li><a href="#">Admin</a></li>
+                            {% if user.is_staff %}
+                                <li><a href="/admin/" target="_blank">Admin</a></li>
+                            {% endif %}
                         </ul>
                     </li>
                     <li><a href="#"></a></li>
@@ -43,7 +46,7 @@
                 </ul>
             </div>
             <div class="cell small-4 text-center hide-for-small-only">{% block APPTITLE %}{% endblock %}</div>
-            <div class="cell small-4 hide-for-small-only"></div>
+            <div class="cell small-4 hide-for-small-only">{% block NAV-TYPE %}{% endblock %}</div>
         </div>
     </header>
     <article class="grid-container main">
