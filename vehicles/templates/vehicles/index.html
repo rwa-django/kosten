@@ -1,7 +1,7 @@
 {% extends "vehicles/base.html" %}
 
 {% block APPTITLE-MOB %}
-    
+
 {% endblock %}
 {% block APPTITLE %}
     Übersicht
@@ -35,19 +35,48 @@
 
 
 {% block content %}
+    <div class="grid-x grid-margin-y">
+        <div class="cell xsmall-12">{% now "l, j. F Y" %}</div>
+        <div class="cell">
 
-    <h2>Independent scrolling content</h2>
-    <hr>
-    <p>1<br>2<br>3<br></p>
-    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.
-Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.
-A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-    <p>44<br>55<br>66<br></p>
-    <p>777<br>888<br>999<br></p> <p>aa<br>bb<br>cc<br></p>
-    <p>ddd<br>eee<br>fff<br></p> <p>a1<br>b1<br>c1<br></p>
-    <hr>
-    <p>1<br>2<br>3<br></p> <p>44<br>55<br>66<br></p>
-    <p>777<br>888<br>999<br></p> <p>aa<br>bb<br>cc<br></p>
-    <p>ddd<br>eee<br>fff<br></p> <p>a1<br>b1<br>c1<br></p>
+            <form action="" method="post">{% csrf_token %}
+                <div class="grid-x grid-margin-x">
+                    <div class="cell small-4">
+                        <label for="km-label" class="text-right middle">Stand</label>
+                    </div>
+                    <div class="cell auto">
+                        <input type="number" name="amount-km" value="" id="km-label" placeholder="Stand km">
+                    </div>
+                    <div class="cell auto">
+                        <label class="text-left middle">km</label>
+                    </div>
+                </div>
+
+                <div class="grid-x grid-margin-x">
+                    <div class="cell small-4">
+                        <label for="chf-label" class="text-right middle">Betrag</label>
+                    </div>
+                    <div class="cell auto">
+                        <input type="number" name="amount-chf" value="" id="chf-label" placeholder="Betrag">
+                    </div>
+                    <div class="cell auto">
+                        <label class="text-left middle">CHF</label>
+                    </div>
+                </div>
+                <div class="grid-x grid-margin-x">
+                    <div class="cell small-4">
+                        <label for="ltr-label" class="text-right middle">Liter</label>
+                    </div>
+                    <div class="cell auto">
+                        <input type="number" name="amount-ltr" value="" id="ltr-label" placeholder="Liter">
+                    </div>
+                    <div class="cell auto">
+                        <label class="text-left middle">ltr.</label>
+                    </div>
+                </div>
+                <button type="submit" class="button success" value="save">SAVE</button>
+            </form>
+        </div>
+    </div>
     <hr>
 {% endblock %}

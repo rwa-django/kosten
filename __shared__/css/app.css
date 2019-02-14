@@ -8,6 +8,15 @@ div {
   _border: 1px dotted yellow;
 }
 
+/* BUTTON */
+.button {
+    background-color: #ff1800;
+}
+.button:hover, .button:focus {
+    background-color: #9c0a00;
+    color: #fefefe;
+}
+
 .header {
   text-align: center;
 }
