@@ -1,6 +1,6 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
-from .models import Vehicle_Type
+from .models import Vehicle_Fuel, Vehicle_Fuel_Pos, Vehicle_Type
 
 from django.contrib.auth.decorators import login_required
 
@@ -58,6 +58,7 @@ def _getVehicleTypes(login):
         'vt_list': vt_list,
         'vt_label': label,
         'vt_type': type,
+        'vt_id': Q_Type[0],
     }
 
 
@@ -69,21 +70,52 @@ def set_vehicle_type(request, type_id):
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
+def _save_amount(login, type, km, chf, ltr):
+
+    Q_V = Vehicle_Fuel.objects.filter(login=login, type=type)
+    if not Q_V:
+        Q = Vehicle_Fuel(login=login, type=type, info='init header')
+        Q.save()
+
+        Q_V = Vehicle_Fuel.objects.filter(login=login, type=type)
+
+    ID_V = Q_V[0].pk
+    Q_Pos = Vehicle_Fuel_Pos.objects.filter(fuel_id=ID_V)
+
+    last_pos = 0
+    for pos in Q_Pos.order_by('pos'):
+        last_pos = pos.pos
+
+    ap = Vehicle_Fuel_Pos(fuel_id=Q_V[0], pos=last_pos + 1, amount=chf, km=km, liter=ltr, info='info text')
+    ap.save()
+
+    return 'gespeichert'
+
+
 @login_required(login_url='/vehicles/login/')
 def index(request):
 
-
     data = _getVehicleTypes(request.user)
 
-    print('user:', request.user)
+    MSG = ''
+    try:
+        amount_km = int(request.POST['amount-km'])
+        amount_chf = float(request.POST['amount-chf'])
+        amount_ltr = float(request.POST['amount-ltr'])
+    except:
+        amount_km = 0
+        amount_chf = 0
+        amount_ltr = 0
+    if amount_km != 0:
+        MSG = _save_amount(request.user, data['vt_id'], amount_km, amount_chf, amount_ltr)
 
-    print('list:', data['vt_list'], data['vt_label'])
 
     template = loader.get_template('vehicles/index.html')
     context = {
         'vt_list': data['vt_list'],
         'vt_type': data['vt_type'],
         'vt_label': data['vt_label'],
+        'MSG': MSG,
     }
     return HttpResponse(template.render(context, request))
 

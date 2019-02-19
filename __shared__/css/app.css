@@ -1,5 +1,5 @@
 body {
-  background-image: url("/static/img/bkgrnd.png");
+  _background-image: url("/static/img/bg.jpg");
   padding: 0px;
   margin: 0px;
 }
