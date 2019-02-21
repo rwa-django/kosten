@@ -51,8 +51,8 @@ class Vehicle_Fuel_Pos(models.Model):
     amount = models.DecimalField(max_digits=10,
                                  decimal_places=2,
                                  help_text="Kosten")
-    km = models.PositiveSmallIntegerField(default=0,
-                                              help_text="KM Stand")
+    km = models.PositiveIntegerField(default=0,
+                                     help_text="KM Stand")
     liter = models.DecimalField(default=0,
                                 max_digits=10,
                                 decimal_places=2,
