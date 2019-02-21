@@ -77,13 +77,77 @@
             </form>
         </div>
     </div>
-            {% if MSG %}
-                <div class="grid-x">
-                    <div class="cell text-center">
-                        <span class="label success">{{ MSG }}</span>
-                    </div>
-                </div>
-            {% endif %}
+    {% if MSG %}
+        <div class="grid-x">
+            <div class="cell text-center">
+                {% if MSG.ERROR %}
+                    <span class="callout alert">{{ MSG.ERROR }}</span>
+                {% else %}
+                    <span class="label success">{{ MSG.SUCCESS }}</span>
+                {% endif %}
+            </div>
+        </div>
+    {% endif %}
 
+    {% if last %}
+        {% if MSG.ERROR %}
+            <div></div>
+        {% else %}
+            <div class="callout {% if MSG %}success{% else %}secondary{% endif %}" style="font-size: smaller;">
+                <div class="grid-x grid-margin-x">
+                    <div class="cell small-6 text-right">letzes mal getankt am:</div>
+                    <div class="cell auto text-left "><b>{{ last.last_date | date:"D d. F Y" }}</b></div>
+                </div>
+                <div class="grid-x grid-margin-x">
+                    <div class="cell small-6 text-right">letzer KM-Stand:</div>
+                    <div class="cell auto text-left"><b>{{ last.last_km }}</b> KM</div>
+                </div>
+                <div class="grid-x grid-margin-x">
+                    <div class="cell small-6 text-right">letzer Ø:</div>
+                    <div class="cell auto text-left"><b>{{ last.last_average |stringformat:".2f" }} </b>ltr.</div>
+                </div>
+            </div>
+        {% endif %}
+    {% endif %}
     <hr>
+    <div class="cell text-center">
+        {% load static %}
+        {% if Q_V_Pos %}
+            <table class="">
+                <thead>
+                    <tr>
+                        <th class="text-left">Datum</th>
+                        <th class="text-left">KM</th>
+                        <th class="text-right">CHF</th>
+                        <th class="text-right">Ltr.</th>
+                        <th class="text-right">Ø</th>
+                        <th class=""></th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for pos in Q_V_Pos %}
+                    <tr>
+                        <td class="text-left" style="white-space: nowrap;">
+                            <a href=" url 'account:updaccountpos' pos.pos " data-update-pos={{ pos.pos }}>
+                                {{ pos.booked | date:"D d. M" }}
+                            </a>
+                        </td>
+                        <td class="text-left">{{ pos.km }}</td>
+                        <td class="text-right">{{ pos.amount |stringformat:".2f" }}.-</td>
+                        <td class="text-right">{{ pos.liter |floatformat:"-2" }}</td>
+                        <td class="text-right">{{ pos.average |floatformat:"-2" }}</td>
+                        <td class="">
+                            <a href=" url 'account:delaccountpos' pos.pos "><img width="24" src="{% static 'img/del.png' %}"></a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <div class="callout warning">
+                Keine Budget-Positionen vorhanden
+            </div>
+        {% endif %}
+    </div>
+
 {% endblock %}

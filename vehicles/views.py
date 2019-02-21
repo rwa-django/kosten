@@ -83,13 +83,21 @@ def _save_amount(login, type, km, chf, ltr):
     Q_Pos = Vehicle_Fuel_Pos.objects.filter(fuel_id=ID_V)
 
     last_pos = 0
+    last_km = 0
+    average = 0
     for pos in Q_Pos.order_by('pos'):
         last_pos = pos.pos
+        last_km = pos.km
 
-    ap = Vehicle_Fuel_Pos(fuel_id=Q_V[0], pos=last_pos + 1, amount=chf, km=km, liter=ltr, info='info text')
-    ap.save()
+    if last_km < km:
+        average = ltr / ((km - last_km) / 100)
 
-    return 'gespeichert'
+        ap = Vehicle_Fuel_Pos(fuel_id=Q_V[0], pos=last_pos + 1, amount=chf, km=km, liter=ltr, average=average, info='info text')
+        ap.save()
+    else:
+        return {'ERROR': 'Fehler bei Eingabe!'}
+
+    return {'SUCCESS': 'Daten gespeichert'}
 
 
 @login_required(login_url='/vehicles/login/')
@@ -109,12 +117,30 @@ def index(request):
     if amount_km != 0:
         MSG = _save_amount(request.user, data['vt_id'], amount_km, amount_chf, amount_ltr)
 
+    Q_V_Pos = []
+    last = {}
+    Q_V = Vehicle_Fuel.objects.filter(login=request.user, type=data['vt_id'])
+    if Q_V:
+        Q_V_Pos = Vehicle_Fuel_Pos.objects.filter(fuel_id=Q_V[0])
+
+        for pos in Q_V_Pos.order_by('pos'):
+            last_av = pos.average
+            last_km = pos.km
+            last_date = pos.booked
+            last = {
+                'last_average': last_av,
+                'last_km': last_km,
+                'last_date': last_date,
+            }
+
 
     template = loader.get_template('vehicles/index.html')
     context = {
+        'last': last,
         'vt_list': data['vt_list'],
         'vt_type': data['vt_type'],
         'vt_label': data['vt_label'],
+        'Q_V_Pos': Q_V_Pos,
         'MSG': MSG,
     }
     return HttpResponse(template.render(context, request))

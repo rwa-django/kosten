@@ -12,7 +12,7 @@ class VehicleFuelAdmin(admin.ModelAdmin):
     search_fields = ('login', 'type',)
 
 class VehicleFuelPosAdmin(admin.ModelAdmin):
-    list_display = ('fuel_id', 'pos', 'amount', 'km', 'liter', 'booked')
+    list_display = ('fuel_id', 'pos', 'amount', 'km', 'liter', 'average', 'booked')
 
 admin.site.register(Vehicle_Type, VehicleTypeAdmin)
 admin.site.register(Vehicle_Fuel, VehicleFuelAdmin)

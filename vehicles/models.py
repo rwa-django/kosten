@@ -59,10 +59,14 @@ class Vehicle_Fuel_Pos(models.Model):
                                 help_text="Liter")
     info = models.CharField(max_length=200,
                             help_text="Buchungs Info")
+    average = models.DecimalField(max_digits=10,
+                                  default=0,
+                                  decimal_places=2,
+                                  help_text="Durchschnittsverbrauch")
 
     def __str__(self):
         return '{0} - {1} / {2}/{3}/{4}'.format(self.pos, self.amount, self.km, self.liter, self.booked)
 
     class Meta:
         unique_together = (('fuel_id', 'pos'),)
-        ordering = ['fuel_id', 'pos']           # sortierung mit - dreht die Sortierung
+        ordering = ['fuel_id', '-pos']           # sortierung mit - dreht die Sortierung
