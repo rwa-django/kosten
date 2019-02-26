@@ -1,5 +1,6 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
+from django.shortcuts import redirect
 from .models import Vehicle_Fuel, Vehicle_Fuel_Pos, Vehicle_Type
 
 from django.contrib.auth.decorators import login_required
@@ -100,6 +101,9 @@ def _save_amount(login, type, km, chf, ltr):
     return {'SUCCESS': 'Daten gespeichert'}
 
 
+###############################
+# Vehicles
+###############################
 @login_required(login_url='/vehicles/login/')
 def index(request):
 
@@ -145,4 +149,19 @@ def index(request):
     }
     return HttpResponse(template.render(context, request))
 
-    # return HttpResponse("Hello, world. You're at the CARS index.")
+
+def del_vehicle_pos(request, pos):
+
+    Q_Type = Vehicle_Type.objects.filter(login=request.user,
+                                         aktiv=True)
+
+    Q_V = Vehicle_Fuel.objects.filter(login=request.user, type=Q_Type[0])
+
+    Q_Pos = Vehicle_Fuel_Pos.objects.filter(fuel_id=Q_V[0], pos=pos)
+    Q_Pos.delete()
+
+    msg = 'Position gelöscht'
+
+    print('--DEL POS:', Q_Pos)
+
+    return redirect('/vehicles')

@@ -137,7 +137,7 @@
                         <td class="text-right">{{ pos.liter |floatformat:"-2" }}</td>
                         <td class="text-right">{{ pos.average |floatformat:"-2" }}</td>
                         <td class="">
-                            <a href=" url 'account:delaccountpos' pos.pos "><img width="24" src="{% static 'img/del.png' %}"></a>
+                            <a href="{% url 'vehicles:delvehiclepos' pos.pos %}"><img width="24" src="{% static 'img/del.png' %}"></a>
                         </td>
                     </tr>
                 {% endfor %}

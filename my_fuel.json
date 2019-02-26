@@ -1,0 +1,19 @@
+{"ID":"110","Pos":"1","fuel_date":"2016-12-10 20:19:21","fuel_wert":"62.20","fuel_km":"144452","fuel_liter":"44.80","fuel_info":"Mein testöäü-text","fuel_booked":"2016-12-10 20:54:18"}
+{"ID":"110","Pos":"2","fuel_date":"2016-12-26 00:00:00","fuel_wert":"74.50","fuel_km":"145144","fuel_liter":"49.00","fuel_info":"TestäöüÄÖÜÀÉÈàéè---","fuel_booked":"2016-12-26 00:00:00"}
+{"ID":"110","Pos":"3","fuel_date":"2017-01-09 00:00:00","fuel_wert":"61.00","fuel_km":"145703","fuel_liter":"41.50","fuel_info":"","fuel_booked":"2017-04-23 17:01:58"}
+{"ID":"110","Pos":"4","fuel_date":"2017-01-23 00:00:00","fuel_wert":"66.00","fuel_km":"146330","fuel_liter":"44.90","fuel_info":"","fuel_booked":"2017-04-23 17:40:41"}
+{"ID":"110","Pos":"5","fuel_date":"2017-02-03 00:00:00","fuel_wert":"69.00","fuel_km":"146943","fuel_liter":"44.80","fuel_info":"","fuel_booked":"2017-04-23 17:58:59"}
+{"ID":"110","Pos":"6","fuel_date":"2017-02-27 00:00:00","fuel_wert":"72.00","fuel_km":"147602","fuel_liter":"46.75","fuel_info":"","fuel_booked":"2017-04-23 17:59:45"}
+{"ID":"110","Pos":"7","fuel_date":"2017-03-12 00:00:00","fuel_wert":"63.20","fuel_km":"148248","fuel_liter":"43.90","fuel_info":"","fuel_booked":"2017-04-23 18:00:32"}
+{"ID":"110","Pos":"8","fuel_date":"2017-03-25 00:00:00","fuel_wert":"60.00","fuel_km":"148851","fuel_liter":"42.30","fuel_info":"","fuel_booked":"2017-04-23 18:01:04"}
+{"ID":"110","Pos":"9","fuel_date":"2017-03-31 00:00:00","fuel_wert":"67.00","fuel_km":"149604","fuel_liter":"47.20","fuel_info":"","fuel_booked":"2017-04-23 18:01:48"}
+{"ID":"110","Pos":"10","fuel_date":"2017-04-12 00:00:00","fuel_wert":"69.00","fuel_km":"150300","fuel_liter":"47.30","fuel_info":"","fuel_booked":"2017-04-23 18:02:28"}
+{"ID":"110","Pos":"11","fuel_date":"2017-03-23 00:00:00","fuel_wert":"66.60","fuel_km":"150972","fuel_liter":"45.65","fuel_info":"","fuel_booked":"2017-04-23 19:18:10"}
+{"ID":"110","Pos":"12","fuel_date":"2017-05-05 00:00:00","fuel_wert":"70.20","fuel_km":"151674","fuel_liter":"47.13","fuel_info":"","fuel_booked":"2017-05-05 17:20:33"}
+{"ID":"110","Pos":"13","fuel_date":"2017-05-12 00:00:00","fuel_wert":"50.60","fuel_km":"152211","fuel_liter":"35.64","fuel_info":"","fuel_booked":"2017-05-12 18:50:59"}
+{"ID":"110","Pos":"14","fuel_date":"2017-05-19 00:00:00","fuel_wert":"64.30","fuel_km":"152936","fuel_liter":"45.23","fuel_info":"","fuel_booked":"2017-05-19 22:12:11"}
+{"ID":"110","Pos":"15","fuel_date":"2017-06-10 00:00:00","fuel_wert":"60.00","fuel_km":"153572","fuel_liter":"42.25","fuel_info":"","fuel_booked":"2017-06-10 12:26:04"}
+{"ID":"110","Pos":"16","fuel_date":"2017-06-20 00:00:00","fuel_wert":"45.00","fuel_km":"154295","fuel_liter":"30.60","fuel_info":"","fuel_booked":"2017-06-20 18:15:28"}
+{"ID":"110","Pos":"17","fuel_date":"2017-06-24 00:00:00","fuel_wert":"60.00","fuel_km":"154684","fuel_liter":"42.80","fuel_info":"","fuel_booked":"2017-06-24 13:45:10"}
+{"ID":"110","Pos":"18","fuel_date":"2017-07-07 00:00:00","fuel_wert":"66.10","fuel_km":"155387","fuel_liter":"47.25","fuel_info":"","fuel_booked":"2017-07-07 15:00:00"}
+{"ID":"110","Pos":"19","fuel_date":"2017-07-28 00:00:00","fuel_wert":"64.75","fuel_km":"156093","fuel_liter":"45.60","fuel_info":"","fuel_booked":"2017-07-28 17:35:36"}
