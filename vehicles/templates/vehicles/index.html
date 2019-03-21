@@ -4,7 +4,7 @@
 
 {% endblock %}
 {% block APPTITLE %}
-    Übersicht
+    Benzin
 {% endblock %}
 
 {% block NAV-TYPE-MOB %}
@@ -128,7 +128,7 @@
                 {% for pos in Q_V_Pos %}
                     <tr>
                         <td class="text-left" style="white-space: nowrap;">
-                            <a href=" url 'account:updaccountpos' pos.pos " data-update-pos={{ pos.pos }}>
+                            <a href=" url 'vehicles:updvehiclepos' pos.pos " data-update-pos={{ pos.pos }}>
                                 {{ pos.booked | date:"D d. M" }}
                             </a>
                         </td>

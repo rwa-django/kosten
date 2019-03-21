@@ -137,7 +137,6 @@ def index(request):
                 'last_date': last_date,
             }
 
-
     template = loader.get_template('vehicles/index.html')
     context = {
         'last': last,
@@ -147,6 +146,36 @@ def index(request):
         'Q_V_Pos': Q_V_Pos,
         'MSG': MSG,
     }
+    return HttpResponse(template.render(context, request))
+
+def upd_vehicle_pos(request, pos):
+
+    msg = ''
+    login = request.user
+
+    Q_Type = Vehicle_Type.objects.filter(login=login,
+                                         aktiv=True)
+    Q_V = Vehicle_Fuel.objects.filter(login=login, type=Q_Type[0])
+
+    try:
+        amount = int(request.POST['amount'])
+        info = request.POST['info']
+    except:
+        amount = 0
+        info = ''
+
+    if amount != 0:
+        val = amount
+        ap = Vehicle_Fuel_Pos.objects.filter(fuel_id=Q_V[0], pos=pos).update(amount=val, booking_info=info)
+
+        msg = 'Ihr Daten wurden gespeichert'
+
+    Q_Pos = Vehicle_Fuel_Pos.objects.filter(fuel_id=Q_V[0], pos=pos)
+
+    context = {'POS': Q_Pos,
+               'MSG': msg,}
+
+    template = loader.get_template('vehicles/vehicle-upd-pos.html')
     return HttpResponse(template.render(context, request))
 
 

@@ -1,0 +1,81 @@
+{% extends "vehicles/base.html" %}
+
+{% block APPTITLE-MOB %}
+
+{% endblock %}
+{% block APPTITLE %}
+    Einstellung
+{% endblock %}
+
+{% block NAV-TYPE-MOB %}
+    {% block NAV-TYPE %}
+        <form action="" method="post">{% csrf_token %}
+            <div class="grid-x grid-margin-x">
+                <div class="cell auto"></div>
+                <div class="cell shrink">
+                    <ul class="dropdown menu" data-dropdown-menu>
+                        <li>
+                            <a href="#" class="{% if bt_type == 'A' %}konto-type--col{% endif %}">{{ vt_label }}</a>
+                            {% if vt_list %}
+                                <ul class="menu">
+                                    {% for vt in vt_list %}
+                                        <li class="dropdowns {% if vt.aktiv %}active{% endif %} v-type__{{ vt.type }}">
+                                            <a class="dropdown-sel" href="{% url 'vehicles:settype' vt.id %}" data-set-budget-typ="{{ vt.id }}">{{ vt.label }}</a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </form>
+    {% endblock %}
+{% endblock %}
+
+{% block content %}
+    <div class="cell text-center">
+        <div class="cell">
+            Pneu Dimension für<br>
+            <b>{{ vt_label }}</b>
+            <br>
+            <br>
+        </div>
+        <div class="grid-x ">
+            {% if Q_S %}
+                {% for S in Q_S %}
+                    <div class="cell grid-x grid-padding-x">
+                        <div class="cell text-center">{{ S.info }}</div>
+                    </div>
+                    <div class="cell grid-x grid-padding-x">
+                        <div class="cell small-6 text-right">Vorne:</div>
+                        <div class="cell small-6 text-left">{{ S.size_font }}</div>
+                    </div>
+                    <div class="cell grid-x grid-padding-x">
+                        <div class="cell small-6 text-right">Hinten:</div>
+                        <div class="cell small-6 text-left">{{ S.size_rear }}</div>
+                    </div>
+                    <div class="cell "><hr></div>
+                {% endfor %}
+                <div class="cell">
+                    <button type="submit" class="button success" value="save">UPDATE</button>
+                </div>
+            {% else %}
+                <div class="cell">
+                    <span class="label warning">keine Dimension erfasst</span>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    {% if MSG %}
+        <div class="grid-x">
+            <div class="cell text-center">
+                {% if MSG.ERROR %}
+                    <span class="callout alert">{{ MSG.ERROR }}</span>
+                {% else %}
+                    <span class="label success">{{ MSG.SUCCESS }}</span>
+                {% endif %}
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

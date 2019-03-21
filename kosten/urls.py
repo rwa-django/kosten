@@ -8,6 +8,7 @@ urlpatterns = [
 ]
 urlpatterns += [
     path('vehicles/', include('vehicles.urls')),
+    path('settings/', include('settings.urls')),
 ]
 
 # Use static() to add url mapping to serve static files during development (only)
